@@ -1,1 +1,18 @@
-spring.application.name=gateway-server
+server:
+  port: 8080
+
+spring:
+  application:
+    name: KT_FINAL_GATEWAY
+  cloud:
+    default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 20s
+    routes:
+
