@@ -26,7 +26,7 @@ spring:
 #          - AuthorizationHeaderFilter
 
       - id: subscription-service
-        uri: http://subscription-service.default.svc.cluster.local:8081
+        uri: http://10.244.2.152:8081
         predicates:
           - Path=/api/v1/subscription/**
 #        filters:
