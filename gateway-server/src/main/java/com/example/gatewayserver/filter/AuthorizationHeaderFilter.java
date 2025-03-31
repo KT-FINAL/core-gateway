@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -27,7 +28,10 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 
     public AuthorizationHeaderFilter() {
         super(Config.class);
+    }
 
+    @PostConstruct
+    public void init() {
         String encodedKey = Base64.getEncoder().encodeToString(secret.getBytes());
         byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
 
