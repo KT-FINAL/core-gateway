@@ -13,7 +13,7 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false
       httpclient:
         connect-timeout: 10000
         response-timeout: 20s
