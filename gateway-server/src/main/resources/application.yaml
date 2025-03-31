@@ -18,4 +18,16 @@ spring:
         connect-timeout: 10000
         response-timeout: 20s
     routes:
+      - id: payment-service
+        uri: http://payment-service.default.svc.cluster.local:8082
+        predicates:
+          - Path=/payments/**
+#        filters:
+#          - AuthorizationHeaderFilter
 
+      - id: subscription-service
+        uri: http://subscription-service.default.svc.cluster.local:8081
+        predicates:
+          - Path=/api/v1/subscriptions/**
+#        filters:
+#          - AuthorizationHeaderFilter
