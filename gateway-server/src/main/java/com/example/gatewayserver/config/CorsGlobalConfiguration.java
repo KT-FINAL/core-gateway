@@ -10,9 +10,6 @@ import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 
-import java.util.Arrays;
-
-
 @Configuration
 @EnableWebFluxSecurity
 public class CorsGlobalConfiguration {
@@ -31,7 +28,6 @@ public class CorsGlobalConfiguration {
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
-        config.setExposedHeaders(Arrays.asList("access"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
