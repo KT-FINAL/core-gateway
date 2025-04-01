@@ -5,7 +5,6 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
@@ -19,12 +18,9 @@ import java.util.Date;
 @Component
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config> {
 
-    @Value("${jwt.secret}")
-    private String secret;
+    private String secret = "b4f8a1d7e2c9f04b85a37d6c0e9f5b12c3d4e8a7f1b6c025d9e7a43f08b2c6d1";
 
     private SecretKey secretKey;
-
-    private final long tokenValidityInMilliseconds = 1000L * 60 * 60 * 24 * 14;
 
     public AuthorizationHeaderFilter() {
         super(Config.class);
