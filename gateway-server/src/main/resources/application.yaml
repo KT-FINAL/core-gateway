@@ -1,33 +1,6 @@
-server:
-  port: 8085
-
-jwt:
-  secret: b4f8a1d7e2c9f04b85a37d6c0e9f5b12c3d4e8a7f1b6c025d9e7a43f08b2c6d1
-
 spring:
-  application:
-    name: KT_FINAL_GATEWAY
   cloud:
-    default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
-    gateway:
-      discovery:
-        locator:
-          enabled: false
-      httpclient:
-        connect-timeout: 10000
-        response-timeout: 20s
-    routes:
-      - id: payment-service
-        uri: http://payment-service.default.svc.cluster.local:8082
-        predicates:
-          - Path=/payments/**
-#        filters:
-#          - AuthorizationHeaderFilter
-
-      - id: subscription-service
-        uri: http://10.244.2.152:8081
-        predicates:
-          - Path=/api/v1/subscription/**
-#        filters:
-#          - AuthorizationHeaderFilter
+    kubernetes:
+      config:
+        name: gateway-config
+        namespace: default
