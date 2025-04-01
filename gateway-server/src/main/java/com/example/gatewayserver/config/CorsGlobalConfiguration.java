@@ -27,9 +27,8 @@ public class CorsGlobalConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:3000"); // 허용할 도메인 추가
-        config.addAllowedOrigin("https://k11a607.p.ssafy.io"); // 허용할 도메인 추가
+        config.setAllowCredentials(false);
+        config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.setExposedHeaders(Arrays.asList("access"));
